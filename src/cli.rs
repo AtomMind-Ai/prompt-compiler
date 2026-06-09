@@ -20,7 +20,7 @@ use log::{info, warn};
 #[derive(Parser)]
 #[command(name = "lpc")]
 #[command(about = "Local Prompt Compiler - Compile text into AI-ready outputs", long_about = None)]
-struct Cli {
+pub struct Cli {
     #[command(subcommand)]
     command: Commands,
 }
