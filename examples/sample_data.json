@@ -1,0 +1,7 @@
+{
+  "name": "Example Item",
+  "description": "This is an example data structure for testing schema validation",
+  "value": 42,
+  "tags": ["example", "test", "validation"],
+  "active": true
+}

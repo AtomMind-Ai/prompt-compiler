@@ -1,0 +1,6 @@
+{
+  "description": "This is missing required fields",
+  "value": "not a number",
+  "tags": ["example"],
+  "extra_field": "this should not be allowed"
+}
