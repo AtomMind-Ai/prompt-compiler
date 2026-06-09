@@ -105,7 +105,7 @@ impl Selector {
         
         for i in (1..=n).rev() {
             let chunk = &chunks[i - 1];
-            let score = score_map.get(&chunk.id)
+            let _score = score_map.get(&chunk.id)
                 .map(|s| s.combined)
                 .unwrap_or(0.0);
             let tokens = chunk.token_estimate;
@@ -120,6 +120,7 @@ impl Selector {
         selected.reverse();
         selected_scores.reverse();
         
+        let selected_len = selected.len();
         let used_tokens: usize = selected.iter().map(|c| c.token_estimate).sum();
         budget.used_tokens = used_tokens;
         budget.remaining_tokens = budget.max_tokens - used_tokens;
@@ -129,7 +130,7 @@ impl Selector {
             budget: budget.clone(),
             scores: selected_scores,
             total_input_chunks: n,
-            rejected_count: n - selected.len(),
+            rejected_count: n - selected_len,
         })
     }
 
