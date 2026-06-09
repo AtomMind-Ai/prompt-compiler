@@ -1,7 +1,7 @@
 use crate::types::{Chunk, SourceInfo};
 use crate::normalize::Normalizer;
 use crate::tokenize::Tokenizer;
-use crate::utils::{compute_hash, sanitize_section_name};
+use crate::utils::sanitize_section_name;
 use std::path::PathBuf;
 use anyhow::Result;
 
@@ -143,8 +143,8 @@ impl Segmenter {
         
         for chunk in chunks {
             if chunk.token_estimate < min_chunk_tokens {
-                current_merge.push(chunk);
                 current_tokens += chunk.token_estimate;
+                current_merge.push(chunk);
             } else {
                 // Flush current merge if any
                 if !current_merge.is_empty() {

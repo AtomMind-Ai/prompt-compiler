@@ -12,7 +12,7 @@ impl SchemaValidator {
         let mut repairs = Vec::new();
         
         // Compile schema
-        let compiled = match JSONSchema::compile(schema, Some(Draft::Draft7)) {
+        let compiled = match JSONSchema::compile(schema) {
             Ok(s) => s,
             Err(e) => {
                 return ValidationResult {

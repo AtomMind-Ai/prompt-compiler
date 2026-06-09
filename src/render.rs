@@ -1,6 +1,5 @@
 use crate::types::{Chunk, Budget, ValidationResult, OutputMetadata, OutputPackage};
 use serde_json;
-use chrono::Utc;
 use anyhow::Result;
 
 pub enum OutputFormat {
@@ -155,11 +154,10 @@ impl Renderer {
                 Ok(output)
             }
             OutputFormat::Compact => {
-                chunks.iter()
+                Ok(chunks.iter()
                     .map(|c| c.content.clone())
                     .collect::<Vec<_>>()
-                    .join("\n\n")
-                    .into()
+                    .join("\n\n"))
             }
         }
     }

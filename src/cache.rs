@@ -3,7 +3,7 @@ use crate::utils::compute_hash;
 use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
-use chrono::{DateTime, Utc, Duration};
+use chrono::{Utc, Duration};
 use anyhow::{Result, Context};
 
 pub struct Cache {

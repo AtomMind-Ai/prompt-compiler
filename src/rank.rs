@@ -1,6 +1,5 @@
 use crate::types::{Chunk, ChunkScore};
 use std::collections::{HashMap, HashSet};
-use regex::Regex;
 
 pub struct Ranker;
 
@@ -94,7 +93,7 @@ impl Ranker {
                 .collect();
             
             for word in words {
-                *freq.entry(word).or_insert(0) += 1;
+                *freq.entry(word.to_string()).or_insert(0) += 1;
             }
         }
         
@@ -116,7 +115,7 @@ impl Ranker {
         let mut novelty_sum = 0.0;
         
         for word in &words {
-            if let Some(&count) = term_freq.get(word) {
+            if let Some(&count) = term_freq.get(&word.to_string()) {
                 // Inverse document frequency style scoring
                 let idf = (total_chunks / count as f64).ln();
                 novelty_sum += idf;
@@ -137,7 +136,7 @@ impl Ranker {
             return 0.0;
         }
         
-        let mut max_overlap = 0.0;
+        let mut max_overlap: f64 = 0.0;
         
         for other in all_chunks {
             if other.id == chunk.id {

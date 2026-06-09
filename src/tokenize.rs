@@ -1,5 +1,4 @@
 use crate::types::Chunk;
-use anyhow::Result;
 
 pub struct Tokenizer;
 

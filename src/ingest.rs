@@ -1,4 +1,4 @@
-use crate::types::{Chunk, SourceInfo};
+use crate::types::SourceInfo;
 use crate::utils::detect_file_format;
 use anyhow::{Result, Context};
 use std::fs::File;

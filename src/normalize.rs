@@ -1,7 +1,5 @@
 use unicode_normalization::UnicodeNormalization;
 use regex::Regex;
-use crate::utils::normalize_whitespace;
-use anyhow::Result;
 
 pub struct Normalizer;
 

@@ -22,7 +22,7 @@ impl Selector {
         
         // Sort chunks by score
         let mut sorted_chunks: Vec<_> = chunks.into_iter()
-            .map(|c| (c, score_map.get(&c.id).cloned().unwrap_or_else(|| {
+            .map(|c| (c.clone(), score_map.get(&c.id).cloned().unwrap_or_else(|| {
                 ChunkScore {
                     chunk_id: c.id.clone(),
                     salience: 0.0,
@@ -38,6 +38,7 @@ impl Selector {
         });
         
         // Greedy selection
+        let total_input_chunks = sorted_chunks.len();
         for (chunk, score) in sorted_chunks {
             if budget.can_fit(chunk.token_estimate) {
                 budget.use_tokens(chunk.token_estimate);
@@ -52,7 +53,7 @@ impl Selector {
             chunks: selected,
             budget: budget.clone(),
             scores: selected_scores,
-            total_input_chunks: sorted_chunks.len(),
+            total_input_chunks,
             rejected_count,
         }
     }
@@ -133,7 +134,7 @@ impl Selector {
     }
 
     /// Remove near-duplicate chunks from selection
-    pub fn deduplicate(chunks: Vec<Chunk>, similarity_threshold: f64) -> Vec<Chunk> {
+    pub fn deduplicate(chunks: Vec<Chunk>, _similarity_threshold: f64) -> Vec<Chunk> {
         let mut deduped = Vec::new();
         let mut seen_hashes = std::collections::HashSet::new();
         
