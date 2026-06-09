@@ -80,7 +80,7 @@ impl Selector {
             .collect();
         
         // DP table: dp[i][w] = max score using first i items with budget w
-        let mut dp = vec![vec![0.0; max_budget + 1]; n + 1];
+        let mut dp: Vec<Vec<f64>> = vec![vec![0.0; max_budget + 1]; n + 1];
         
         for i in 1..=n {
             let chunk = &chunks[i - 1];

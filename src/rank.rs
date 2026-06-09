@@ -86,9 +86,9 @@ impl Ranker {
         let mut freq = HashMap::new();
         
         for chunk in chunks {
-            let words: Vec<&str> = chunk.content.split_whitespace()
+            let words: Vec<String> = chunk.content.split_whitespace()
                 .map(|w| w.to_lowercase())
-                .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric()))
+                .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric()).to_string())
                 .filter(|w| w.len() > 3)
                 .collect();
             
@@ -101,9 +101,9 @@ impl Ranker {
     }
 
     fn compute_novelty(chunk: &Chunk, term_freq: &HashMap<String, usize>) -> f64 {
-        let words: Vec<&str> = chunk.content.split_whitespace()
+        let words: Vec<String> = chunk.content.split_whitespace()
             .map(|w| w.to_lowercase())
-            .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric()))
+            .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric()).to_string())
             .filter(|w| w.len() > 3)
             .collect();
         

@@ -1,6 +1,6 @@
 use crate::types::{ValidationError, ValidationResult, RepairAction, ErrorType, RepairType};
 use anyhow::Result;
-use jsonschema::{JSONSchema, Draft};
+use jsonschema::JSONSchema;
 use serde_json::Value;
 
 pub struct SchemaValidator;
