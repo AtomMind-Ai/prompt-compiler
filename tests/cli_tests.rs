@@ -95,10 +95,10 @@ fn test_validate_valid_json() {
     let schema_file = temp_dir.path().join("schema.json");
     
     let mut file = File::create(&input_file).unwrap();
-    writeln!(file, r#"{"name": "test"}"#).unwrap();
+    writeln!(file, "{{\"name\": \"test\"}}").unwrap();
     
     let mut schema = File::create(&schema_file).unwrap();
-    writeln!(schema, r#"{"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}"#).unwrap();
+    writeln!(schema, "{{\"type\": \"object\", \"properties\": {{\"name\": {{\"type\": \"string\"}}}}, \"required\": [\"name\"]}}").unwrap();
     
     Command::cargo_bin("lpc")
         .unwrap()
@@ -115,10 +115,10 @@ fn test_validate_invalid_json() {
     let schema_file = temp_dir.path().join("schema.json");
     
     let mut file = File::create(&input_file).unwrap();
-    writeln!(file, r#"{"other": "test"}"#).unwrap();
+    writeln!(file, "{{\"other\": \"test\"}}").unwrap();
     
     let mut schema = File::create(&schema_file).unwrap();
-    writeln!(schema, r#"{"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}"#).unwrap();
+    writeln!(schema, "{{\"type\": \"object\", \"properties\": {{\"name\": {{\"type\": \"string\"}}}}, \"required\": [\"name\"]}}").unwrap();
     
     Command::cargo_bin("lpc")
         .unwrap()
@@ -135,10 +135,10 @@ fn test_diff() {
     let new_file = temp_dir.path().join("new.json");
     
     let mut old = File::create(&old_file).unwrap();
-    writeln!(old, r#"{"chunks": [{"id": "1", "content": "old"}]}"#).unwrap();
+    writeln!(old, "{{\"chunks\": [{{\"id\": \"1\", \"content\": \"old\"}}]}}").unwrap();
     
     let mut new = File::create(&new_file).unwrap();
-    writeln!(new, r#"{"chunks": [{"id": "2", "content": "new"}]}"#).unwrap();
+    writeln!(new, "{{\"chunks\": [{{\"id\": \"2\", \"content\": \"new\"}}]}}").unwrap();
     
     Command::cargo_bin("lpc")
         .unwrap()
