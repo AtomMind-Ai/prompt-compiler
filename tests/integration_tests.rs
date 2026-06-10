@@ -1,14 +1,12 @@
 use local_prompt_compiler::types::{Chunk, SourceInfo, Budget};
 use local_prompt_compiler::ingest::Ingester;
 use local_prompt_compiler::normalize::Normalizer;
-use local_prompt_compiler::tokenize::Tokenizer;
 use local_prompt_compiler::segment::Segmenter;
 use local_prompt_compiler::rank::Ranker;
 use local_prompt_compiler::select::Selector;
 use local_prompt_compiler::schema::SchemaValidator;
 use local_prompt_compiler::render::Renderer;
 use local_prompt_compiler::cache::Cache;
-use std::path::PathBuf;
 use tempfile::TempDir;
 
 #[test]
