@@ -160,7 +160,7 @@ impl Selector {
         // Count sections
         let mut section_counts: std::collections::HashMap<String, usize> = std::collections::HashMap::new();
         for chunk in &chunks {
-            let section = chunk.section_path.get(0).map(|s| s.as_str()).unwrap_or("root");
+            let section = chunk.section_path.first().map(|s| s.as_str()).unwrap_or("root");
             *section_counts.entry(section.to_string()).or_insert(0) += 1;
         }
         
@@ -175,7 +175,7 @@ impl Selector {
         let mut remaining = Vec::new();
         
         for chunk in chunks {
-            let section = chunk.section_path.get(0).map(|s| s.as_str()).unwrap_or("root");
+            let section = chunk.section_path.first().map(|s| s.as_str()).unwrap_or("root");
             if seen_sections.contains(section) {
                 remaining.push(chunk);
             } else {

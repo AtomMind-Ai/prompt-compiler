@@ -27,7 +27,7 @@ impl Tokenizer {
 
     /// Estimate tokens for multiple chunks
     pub fn estimate_total_tokens(chunks: &[Chunk]) -> usize {
-        chunks.iter().map(|c| Self::estimate_chunk_tokens(c)).sum()
+        chunks.iter().map(Self::estimate_chunk_tokens(c)).sum()
     }
 
     /// Check if content fits within budget

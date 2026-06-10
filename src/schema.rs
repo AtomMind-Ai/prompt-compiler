@@ -148,7 +148,7 @@ impl SchemaValidator {
     fn extract_key_from_path(path: &str) -> Option<String> {
         // Extract the last component from JSON pointer path
         let parts: Vec<&str> =path.split('/').collect();
-        if parts.len() > 0 {
+        if !parts.is_empty() {
             Some(parts.last()?.to_string())
         } else {
             None
@@ -171,11 +171,7 @@ impl SchemaValidator {
                 None
             }
             Value::Number(n) => {
-                if n.is_i64() {
-                    Some(Value::String(n.to_string()))
-                } else {
-                    Some(Value::String(n.to_string()))
-                }
+                Some(Value::String(n.to_string()))
             }
             Value::Bool(b) => Some(Value::String(b.to_string())),
             Value::Array(arr) => {

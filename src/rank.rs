@@ -33,7 +33,7 @@ impl Ranker {
         let mut score = 0.0;
         
         // Header emphasis: chunks in named sections get higher scores
-        if chunk.section_path.len() > 1 || chunk.section_path.get(0).map(|s| s != "root") == Some(true) {
+        if chunk.section_path.len() > 1 || chunk.section_path.first().map(|s| s != "root") == Some(true) {
             score += 0.3;
         }
         
