@@ -13,9 +13,10 @@ use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 use std::fs;
 use std::time::Instant;
+use std::str::FromStr;
 use anyhow::Result;
 use chrono::Utc;
-use log::{info, warn};
+use log::info;
 
 #[derive(Parser)]
 #[command(name = "lpc")]
@@ -213,7 +214,9 @@ fn run_pack(
     };
     
     // Render output
-    let output_format = OutputFormat::from_str(&format);
+    let output_format = format.parse::<OutputFormat>().map_err(|_| {
+        anyhow::anyhow!("Invalid output format: {}", format)
+    })?;
     let rendered = Renderer::render_package(
         selection.chunks,
         budget_obj,

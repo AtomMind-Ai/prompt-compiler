@@ -11,7 +11,6 @@ mod render;
 mod cache;
 mod utils;
 
-use cli::Cli;
 use anyhow::Result;
 
 fn main() -> Result<()> {
