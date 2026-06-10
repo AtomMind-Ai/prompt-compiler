@@ -2,7 +2,6 @@ use crate::types::{
     Budget, Chunk, OutputMetadata, OutputPackage, ValidationResult,
 };
 use anyhow::Result;
-use chrono::Utc;
 use std::str::FromStr;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -309,7 +308,7 @@ mod tests {
         }];
 
         let metadata = OutputMetadata {
-            timestamp: Utc::now(),
+            timestamp: chrono::Utc::now(),
             source_files: vec![],
             total_input_tokens: 10,
             processing_time_ms: 100,
