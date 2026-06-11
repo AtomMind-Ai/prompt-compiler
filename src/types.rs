@@ -135,6 +135,7 @@ pub struct CacheEntry {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[allow(dead_code)]
 pub struct ProfileResult {
     pub stage_times: Vec<StageTiming>,
     pub total_time_ms: u64,
@@ -142,12 +143,14 @@ pub struct ProfileResult {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[allow(dead_code)]
 pub struct StageTiming {
     pub stage: String,
     pub duration_ms: u64,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[allow(dead_code)]
 pub struct DiffResult {
     pub added_chunks: Vec<Chunk>,
     pub removed_chunks: Vec<Chunk>,

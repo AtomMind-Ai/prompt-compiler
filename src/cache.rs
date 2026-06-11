@@ -67,6 +67,7 @@ impl Cache {
         self.entries.insert(content_hash, entry);
     }
 
+    #[allow(dead_code)]
     pub fn get_or_compute<F>(&mut self, content: &str, compute_fn: F) -> Result<Vec<Chunk>>
     where
         F: FnOnce() -> Result<Vec<Chunk>>,
@@ -100,10 +101,12 @@ impl Cache {
         }
     }
 
+    #[allow(dead_code)]
     pub fn invalidate(&mut self, content_hash: &str) -> bool {
         self.entries.remove(content_hash).is_some()
     }
 
+    #[allow(dead_code)]
     pub fn invalidate_by_path(&mut self, path: &Path) -> Result<usize> {
         let path_str = path.to_string_lossy().to_string();
         let mut removed = 0;

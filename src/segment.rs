@@ -136,6 +136,7 @@ impl Segmenter {
         })
     }
 
+    #[allow(dead_code)]
     pub fn merge_small_chunks(chunks: Vec<Chunk>, min_chunk_tokens: usize) -> Vec<Chunk> {
         let mut merged = Vec::new();
         let mut current_merge: Vec<Chunk> = Vec::new();
@@ -175,6 +176,7 @@ impl Segmenter {
         merged
     }
 
+    #[allow(dead_code)]
     fn do_merge_chunks(chunks: Vec<Chunk>) -> Chunk {
         let first = &chunks[0];
         let last = &chunks.last().unwrap();

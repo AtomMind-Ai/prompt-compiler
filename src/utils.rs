@@ -7,6 +7,7 @@ pub fn compute_hash(content: &str) -> String {
     hex::encode(hasher.finalize())
 }
 
+#[allow(dead_code)]
 pub fn detect_file_format(path: &Path) -> Option<String> {
     let extension = path.extension()?.to_str()?;
     match extension.to_lowercase().as_str() {
@@ -23,6 +24,7 @@ pub fn sanitize_section_name(name: &str) -> String {
         .collect()
 }
 
+#[allow(dead_code)]
 pub fn normalize_whitespace(text: &str) -> String {
     text.split_whitespace()
         .collect::<Vec<_>>()

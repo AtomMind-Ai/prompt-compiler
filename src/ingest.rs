@@ -30,10 +30,12 @@ impl Ingester {
         Ok(content)
     }
 
+    #[allow(dead_code)]
     pub fn detect_format(path: &Path) -> Option<String> {
         detect_file_format(path)
     }
 
+    #[allow(dead_code)]
     pub fn read_multiple(paths: &[PathBuf]) -> Result<Vec<(PathBuf, String)>> {
         let mut results = Vec::new();
         for path in paths {

@@ -198,6 +198,7 @@ impl SchemaValidator {
     }
 
     /// Check if JSON is well-formed
+    #[allow(dead_code)]
     pub fn is_well_formed(json: &str) -> bool {
         serde_json::from_str::<Value>(json).is_ok()
     }

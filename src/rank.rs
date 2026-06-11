@@ -176,6 +176,7 @@ impl Ranker {
     }
 
     /// Sort chunks by score in descending order
+    #[allow(dead_code)]
     pub fn sort_by_score(chunks: &[Chunk], scores: &[ChunkScore]) -> Vec<(Chunk, ChunkScore)> {
         let mut paired: Vec<_> = chunks.iter()
             .zip(scores.iter())

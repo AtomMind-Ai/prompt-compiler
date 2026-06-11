@@ -135,6 +135,7 @@ impl Selector {
     }
 
     /// Remove near-duplicate chunks from selection
+    #[allow(dead_code)]
     pub fn deduplicate(chunks: Vec<Chunk>, _similarity_threshold: f64) -> Vec<Chunk> {
         let mut deduped = Vec::new();
         let mut seen_hashes = std::collections::HashSet::new();
@@ -152,6 +153,7 @@ impl Selector {
     }
 
     /// Ensure diverse section coverage
+    #[allow(dead_code)]
     pub fn ensure_diversity(chunks: Vec<Chunk>, min_sections: usize) -> Vec<Chunk> {
         if chunks.len() <= min_sections {
             return chunks;

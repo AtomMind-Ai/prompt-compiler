@@ -31,6 +31,7 @@ impl Tokenizer {
     }
 
     /// Check if content fits within budget
+    #[allow(dead_code)]
     pub fn fits_budget(text: &str, budget: usize) -> bool {
         Self::estimate_tokens(text) <= budget
     }

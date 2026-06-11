@@ -248,6 +248,7 @@ impl Renderer {
         Ok(output)
     }
 
+    #[allow(dead_code)]
     pub fn render_chunks_only(
         chunks: &[Chunk],
         format: OutputFormat,
